@@ -43,4 +43,8 @@ REST는 REpresentational State Transfer의 줄임말이며, 서버의 자원을 
 
 주소 하나가 요청 메서드를 여러 개 가질 수 있다. GET 메서드의 /user 주소로 요청을 보내면 사용자 정보를 가져오는 요청이라는 것을 알 수 있다. POST 메서드의 /user주소로 요청을 보내면 새로운 사용자를 등록한다는 것을 알 수 있다. 이렇게 주소와 메서드만 보고 요청의 내용을 알 수 있다는 장점이 있다. 또한 GET 메서드는 브라우저에서 캐싱할 수도 있으므로 같은 주소로 GET요청을 할 때 서버에서 가져오는 것이라 아니라 캐시에서 가져올 수도 있다.
 
-> res.end 앞에 return 을 붘여야만 함수가 종료된다.
+> res.end 앞에 return 을 붙여야만 함수가 종료된다.
+
+REST방식으로 주소를 만들었으므로 주소와 메서드만 봐도 요청 내용을 유추할 수 있다. Name은 요청 주소를 method는 요청 메서드를, Status는 HTTP 응답 코드를, Protocol은 통신 프로토콜을, Type은 요청의 종류를 의미한다. xhr는 AJAX 요청이다.
+
+General은 공통된 헤더이고 Request Headers는 요청의 헤더, Response Headers는 응답의 헤더이다. Request Payload가 요청의 본문이다. 응답의 본문은 Preview나 Response 탭에서 확인할 수 있다.
