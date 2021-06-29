@@ -5,7 +5,7 @@ const connect = () => {
     mongoose.set("debug", true);
   }
   mongoose.connect(
-    "mongodb://dongwon:ehddnjs89@localhost:27017/admin",
+    `mongodb://${process.env.DB_ID}:${process.env.DB_PASSWORD}@localhost:27017/admin`,
     {
       dbName: "nodejs",
       useNewUrlParser: true,

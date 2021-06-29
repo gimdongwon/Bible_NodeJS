@@ -8,6 +8,10 @@ const indexRouter = require("./routes");
 const usersRouter = require("./routes/users");
 const commentsRouter = require("./routes/comments");
 
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const app = express();
 app.set("port", process.env.PORT || 3002);
 app.set("view engine", "html");
