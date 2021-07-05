@@ -11,6 +11,8 @@ router.use((req, res, next) => {
   res.locals.followerIdList = req.user
     ? req.user.Followings.map((f) => f.id)
     : [];
+  res.locals.following = req.user && req.user.Followings.map((f) => f.nick); // 팔로잉 목록
+  res.locals.followering = req.user && req.user.Followers.map((f) => f.nick);
   next();
 });
 
