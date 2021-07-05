@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 module.exports = class Post extends Sequelize.Model {
   static init(sequelize) {
@@ -15,17 +15,18 @@ module.exports = class Post extends Sequelize.Model {
       },
       {
         sequelize,
-        timestamps: false,
-        modelName: 'Post',
-        tableName: 'posts',
+        timestamps: true,
+        underscored: false,
+        modelName: "Post",
+        tableName: "posts",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci",
       }
     );
   }
   static associate(db) {
     db.Post.belongsTo(db.User);
-    db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
+    db.Post.belongsToMany(db.Hashtag, { through: "PostHashtag" });
   }
 };

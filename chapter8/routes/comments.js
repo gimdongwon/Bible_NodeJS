@@ -1,16 +1,15 @@
-const express = require("express");
-const Comment = require("../schemas/comment");
+const express = require('express');
+const Comment = require('../schemas/comment');
 
 const router = express.Router();
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body.id, req.body.comment, "@@@");
     const comment = await Comment.create({
       commenter: req.body.id,
       comment: req.body.comment,
     });
-    const result = await Comment.populate(comment, { path: "commenter" });
+    const result = await Comment.populate(comment, { path: 'commenter' });
     res.status(201).json(result);
   } catch (error) {
     console.error(error);
@@ -19,7 +18,7 @@ router.post("/", async (req, res, next) => {
 });
 
 router
-  .route("/:id")
+  .route('/:id')
   .patch(async (req, res, next) => {
     try {
       const result = await Comment.update(
