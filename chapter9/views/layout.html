@@ -56,16 +56,20 @@
       };
     </script>
     <script>
-      document
-        .querySelector(".following-count")
-        .addEventListener("click", function () {
-          alert("{{following}}");
-        });
-      document
-        .querySelector(".follower-count")
-        .addEventListener("click", function () {
-          alert("{{followering}}");
-        });
+      // 팔로우 보기
+      if ("{{user}}") {
+        document
+          .querySelector(".following-count")
+          .addEventListener("click", function () {
+            alert("{{following}}");
+          });
+        // 팔로워 보기
+        document
+          .querySelector(".follower-count")
+          .addEventListener("click", function () {
+            alert("{{followering}}");
+          });
+      }
     </script>
 
     {% block script %} {% endblock %}
