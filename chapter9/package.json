@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "concurrently \"nodemon --watch src/ app.js\" \"yarn open\"",
+    "dev": "concurrently \"nodemon app.js\" \"yarn open\"",
     "open": "sleep 1 && open http://localhost:8001"
   }
 }

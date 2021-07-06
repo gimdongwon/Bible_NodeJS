@@ -56,19 +56,40 @@
       };
     </script>
     <script>
-      // 팔로우 보기
+      // 로그인 했을 때 화면에서 팔로우 인원수 보아야 하기에 추가.
       if ("{{user}}") {
+        // 팔로우 보기
         document
           .querySelector(".following-count")
           .addEventListener("click", function () {
-            alert("{{following}}");
+            alert("내가 팔로우 하는 계정 \n{{following}}");
           });
         // 팔로워 보기
         document
           .querySelector(".follower-count")
           .addEventListener("click", function () {
-            alert("{{followering}}");
+            alert("나를 팔로우 하는 계정 \n{{followering}}");
           });
+        // 계정 이름 수정하기
+        document.querySelector(".user-name").addEventListener("click", () => {
+          if (confirm("이름을 수정하시겠습니까?")) {
+            const nickname = prompt("수정하실 이름을 입력하세요.");
+            const userId = "{{user.id}}";
+            if (nickname !== "") {
+              axios
+                .patch(`user/${userId}/update`, { nickname })
+                .then(() => {
+                  alert("수정 완료하였습니다.");
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              alert("수정하실 이름을 입력해주세요");
+            }
+          }
+        });
       }
     </script>
 

@@ -47,5 +47,21 @@ router.post("/:id/getFollowing", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+router.patch("/:id/update", isLoggedIn, async (req, res, next) => {
+  try {
+    await User.update(
+      {
+        nick: req.body.nickname,
+      },
+      {
+        where: { id: req.user.id },
+      }
+    );
+    res.status(200).json({ nick: req.body.nickname });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 module.exports = router;

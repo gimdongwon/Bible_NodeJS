@@ -44,6 +44,8 @@
       <button class="twit-follow">팔로우하기</button>
       {% elif followerIdList.includes(twit.User.id) %}
       <button class="twit-unfollow">언팔로우하기</button>
+      {% elif twit.User.id === user.id %}
+      <button class="twit-delete">X</button>
       {% endif %}
       <div class="twit-content">{{twit.content}}</div>
       {% if twit.img %}
@@ -106,6 +108,29 @@
               })
               .catch((err) => {
                 console.error(err);
+              });
+          }
+        }
+      }
+    });
+  });
+  // post 삭제 메소드
+  document.querySelectorAll(".twit-delete").forEach(function (tag) {
+    tag.addEventListener("click", function () {
+      const myId = document.querySelector("#my-id");
+      if (myId) {
+        const userId = tag.parentNode.querySelector(".twit-user-id").value;
+        const twitId = tag.parentNode.querySelector(".twit-id").value;
+        if (userId == myId.value) {
+          if (confirm("게시물을 삭제하시겠습니까?")) {
+            axios
+              .delete(`post/${twitId}/delete`)
+              .then(() => {
+                alert("삭제 완료하였습니다.");
+                location.reload();
+              })
+              .catch((err) => {
+                console.log(err);
               });
           }
         }
