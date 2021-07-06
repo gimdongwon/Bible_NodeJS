@@ -56,8 +56,9 @@
       };
     </script>
     <script>
-      // 팔로우 보기
+      // 로그인 했을 때 화면에서 팔로우 인원수 보아야 하기에 추가.
       if ("{{user}}") {
+        // 팔로우 보기
         document
           .querySelector(".following-count")
           .addEventListener("click", function () {

@@ -60,4 +60,17 @@ router.post("/", isLoggedIn, upload2.none(), async (req, res, next) => {
   }
 });
 
+router.delete("/:id/delete", async (req, res, next) => {
+  console.log(req.params.id, "$$$$");
+  try {
+    await Post.destroy({
+      where: { id: parseInt(req.params.id) },
+    });
+    res.send("success delete");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 module.exports = router;
