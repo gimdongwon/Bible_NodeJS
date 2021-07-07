@@ -71,5 +71,21 @@ router.delete("/:id/delete", async (req, res, next) => {
     next(error);
   }
 });
+router.patch("/:id/like", async (req, res, next) => {
+  try {
+    await Post.update(
+      {
+        likes: req.body.likeCount + 1,
+      },
+      {
+        where: { id: parseInt(req.params.id) },
+      }
+    );
+    res.status(200).json({ likes: req.body.likeCount + 1 });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 module.exports = router;

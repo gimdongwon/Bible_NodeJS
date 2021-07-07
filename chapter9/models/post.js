@@ -12,6 +12,11 @@ module.exports = class Post extends Sequelize.Model {
           type: Sequelize.STRING(200),
           allowNull: true,
         },
+        likes: {
+          type: Sequelize.INTEGER,
+          defaultValue: 0,
+          allowNull: false,
+        },
       },
       {
         sequelize,

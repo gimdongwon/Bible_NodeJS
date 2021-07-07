@@ -39,6 +39,10 @@
       <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
       <input type="hidden" value="{{twit.id}}" class="twit-id" />
       <div class="twit-author">{{twit.User.nick}}</div>
+      <br />
+      좋아요 수 :
+      <div class="twit-likes">{{twit.likes}}</div>
+      <button class="twit-like-btn">likes</button>
       {% if not followerIdList.includes(twit.User.id) and twit.User.id !==
       user.id and user %}
       <button class="twit-follow">팔로우하기</button>
@@ -135,6 +139,26 @@
           }
         }
       }
+    });
+  });
+  document.querySelectorAll(".twit-like-btn").forEach((tag) => {
+    tag.addEventListener("click", () => {
+      const twitId = tag.parentNode.querySelector(".twit-id").value;
+      const likeCount = parseInt(
+        tag.parentNode.querySelector(".twit-likes").textContent
+      );
+      const params = {
+        twitId,
+        likeCount,
+      };
+      axios
+        .patch(`post/${twitId}/like`, params)
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     });
   });
 </script>
