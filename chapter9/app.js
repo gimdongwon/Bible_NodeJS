@@ -25,9 +25,6 @@ nunjucks.configure("views", {
   watch: true,
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 sequelize
   .sync({ force: false })
   .then(() => {
