@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
+  "name": "chapter11",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Dongwon",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app",
+    "test": "jest"
+  }
+}
