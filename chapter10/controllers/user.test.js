@@ -1,5 +1,6 @@
 jest.mock('../models/user');
 const User = require('../models/user');
+const config = require('../config/config')['test'];
 const { addFollowing } = require('./user');
 
 describe('addFollowing', () => {
