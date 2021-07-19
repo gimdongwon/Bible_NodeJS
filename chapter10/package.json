@@ -6,9 +6,11 @@
   "author": "Dongwon",
   "license": "MIT",
   "scripts": {
-    "start": "open http://localhost:8002 && nodemon app.js"
+    "start": "open http://localhost:8002 && nodemon app.js",
+    "test": "jest"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
     "nodemon": "^2.0.12"
   },
   "dependencies": {
